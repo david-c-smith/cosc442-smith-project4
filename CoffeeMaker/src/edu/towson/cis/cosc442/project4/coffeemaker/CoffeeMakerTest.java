@@ -658,5 +658,51 @@ public class CoffeeMakerTest extends TestCase {
 		// add additional test code here
 		assertEquals(1, result);
 	}
-
+	
+	//additional changes to killed mutations
+	@Test
+	public void testMutation() {
+		assertTrue(cm.addInventory(0, 0, 0, 0));
+	}
+	
+	@Test
+	public void testInventoryNotEnough() {
+		r1 = new Recipe();
+		r1.setAmtMilk(1);
+		r1.setAmtSugar(1);
+		r1.setAmtChocolate(0);
+		r1.setName("Coffee");
+		r1.setPrice(50);
+		r1.setAmtCoffee(16);
+		cm.addRecipe(r1);
+		assertEquals("Not enough ingredients for the coffee", 50, cm.makeCoffee(r1, 50));
+	}
+	
+	@Test
+	public void testMilkAmount() {
+		cm.addRecipe(r1);
+		cm.makeCoffee(r1, 50);
+		assertEquals("Incorrect", 14, cm.checkInventory().getMilk());
+	}
+	
+	@Test
+	public void testChocolateAmount() {
+		r1.setAmtChocolate(1);
+		cm.addRecipe(r1);
+		cm.makeCoffee(r1, 50);
+		assertEquals("Incorrect", 14, cm.checkInventory().getChocolate());
+	}
+	
+	@Test
+	public void testSugarAmount() {
+		cm.addRecipe(r1);
+		cm.makeCoffee(r1, 50);
+		assertEquals("Incorrect", 14, cm.checkInventory().getSugar());
+	}
+	
+	@Test
+	public void testGetRecipeForName() {
+		cm.addRecipe(r1);
+		assertEquals("Incorrect", "Coffee", cm.getRecipeForName("Coffee").getName());
+	}
 }

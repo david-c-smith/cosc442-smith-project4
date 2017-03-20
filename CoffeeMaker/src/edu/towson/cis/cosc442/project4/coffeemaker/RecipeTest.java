@@ -11,6 +11,7 @@ import static org.junit.Assert.*;
  * @version $Revision: 1.0 $
  */
 public class RecipeTest {
+	Recipe r;
 	/**
 	 * Run the boolean equals(Recipe) method test.
 	 *
@@ -30,6 +31,7 @@ public class RecipeTest {
 		// add additional test code here
 		assertEquals(false, result);
 	}
+
 
 	/**
 	 * Run the boolean equals(Recipe) method test.
@@ -412,6 +414,21 @@ public class RecipeTest {
 		// add additional test code here
 		assertEquals("", result);
 	}
+	
+	@Test
+	public void testEquals1() {
+		final Recipe r2 = new Recipe();
+		r2.setName("Coffee");
+		assertFalse("Equal recipes", r.equals(r2));
+	}
+	
+	@Test
+	public void testEquals2() {
+		final Recipe r2 = new Recipe();
+		r.setName("Coffee");
+		r2.setName("Cappuccino");
+		assertFalse("Equal recipes", r.equals(r2));
+	}
 
 	/**
 	 * Perform pre-test initialization.
@@ -424,9 +441,10 @@ public class RecipeTest {
 	@Before
 	public void setUp()
 		throws Exception {
+		r = new Recipe();
 		// add additional set up code here
 	}
-
+	
 	/**
 	 * Perform post-test clean-up.
 	 *

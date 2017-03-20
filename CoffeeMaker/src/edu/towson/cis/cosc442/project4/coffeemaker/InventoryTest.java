@@ -70,6 +70,35 @@ public class InventoryTest {
 		// add additional test code here
 		assertEquals(true, result);
 	}
+	
+	@Test
+	public void testEnoughIngredients_3()
+		throws Exception {
+		Inventory i = new Inventory();
+		Recipe r = new Recipe();
+		r.setAmtCoffee(15);
+		r.setAmtMilk(15);
+		r.setAmtSugar(15);
+		r.setAmtChocolate(15);
+		boolean result = i.enoughIngredients(r);
+
+		// add additional test code here
+		assertEquals(true, result);
+	}
+	
+	@Test
+	public void testEnoughIngredients_4()
+		throws Exception {
+		Inventory i = new Inventory();
+		Recipe r = new Recipe();
+		r.setAmtCoffee(15);
+		r.setAmtMilk(15);
+		r.setAmtSugar(15);
+		r.setAmtChocolate(15);
+		boolean result = i.enoughIngredients(r);
+		// add additional test code here
+		assertEquals(true, result);
+	}
 
 	/**
 	 * Run the int getChocolate() method test.
@@ -285,6 +314,11 @@ public class InventoryTest {
 		fixture.setSugar(sugar);
 
 		// add additional test code here
+	}
+
+	private void assertTrue(Object setChocolate) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	/**
